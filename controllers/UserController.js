@@ -92,33 +92,6 @@ exports.listar = async (req, res, next) => {
     }
 };
 
-// exports.update = async (req, res, next) => {
-//     try {
-//         const user = await models.Usuario.findOne({ where: { email : req.body.email } });
-
-//         if (user){
-
-//             const user = await models.Usuario.update({name: req.body.name},
-//                 {
-//                     where: {
-//                         email: req.body.email
-//                     },
-//             });
-//             res.status(200).json(user);
-//         } else {
-//             res.status(404).send({
-//                 message: "User not found."
-//             })
-//         }
-
-//     } catch (error) {
-//         res.status(500).send({
-//             message: "Error!!"
-//         })
-//         next(error);
-//     }
-// };
-
 
 exports.add = async (req, res, next) => {
     try {
