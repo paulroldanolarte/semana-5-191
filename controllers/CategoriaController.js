@@ -36,7 +36,7 @@ exports.add = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
     try {
-        const register = await models.Categoria.update({nombre: req.body.nombre, descripcion:req.body.descripcion},
+        const register = await models.Categoria.update({nombre: req.body.nombre, descripcion:req.body.descripcion, imagen:req.body.imagen, ruta:req.body.ruta},
                 {
                 where: {
                     id: req.body.id

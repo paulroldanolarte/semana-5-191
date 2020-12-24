@@ -3,13 +3,20 @@ const routerx = require('express-promise-router');
 const articuloController = require ('../../controllers/ArticuloController'); 
 const auth = require('../../middlewares/auth');
 
-const router = routerx();
+//pruebas front se quita: ,auth.verifyUsuario
 
+
+const router = routerx();
+//api/articulo/list   [GET]
 router.get('/list',articuloController.list); //agregue list*****
-router.post('/add',auth.verifyUsuario,articuloController.add);
+//api/articulo/add    [POST]
+router.post('/add',articuloController.add);
+//api/articulo/update  [PUT]
 router.put('/update',auth.verifyUsuario ,articuloController.update);
-router.put('/activate',auth.verifyUsuario ,articuloController.activate);
-router.put('/deactivate',auth.verifyUsuario ,articuloController.deactivate);
+//api/articulo/activate [PUT]
+router.put('/activate',articuloController.activate);
+//api/articulo/deactivate  [PUT]
+router.put('/deactivate',articuloController.deactivate);
 
 
 

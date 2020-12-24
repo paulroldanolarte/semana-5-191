@@ -28,4 +28,9 @@ if (process.env.NODE_ENV !== 'test') {
     });
 }
 
+app.listen(app.get('PORT'), () => {
+    console.log(`Running on http://localhost:${app.get('port')}`)
+})
+
+
 module.exports = app;

@@ -3,9 +3,12 @@ const models = require('../models');
 exports.list = async (req, res, next) => {
     try {
         const register = await models.Articulo.findAll({
-            where:{
-                estado:1
+            include:[{
+                model: models.Categoria,
+                as: 'categoria',
+                attributes: ["nombre","estado"]
             }
+        ]
         });
         
         if (register) {
@@ -41,7 +44,7 @@ exports.add = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
     try {
-        const register = await models.Articulo.update({codigo: req.body.codigo, nombre: req.body.nombre, descripcion:req.body.descripcion, categoriaId:req.body.categoriaId},
+        const register = await models.Articulo.update({codigo: req.body.codigo, nombre: req.body.nombre, descripcion:req.body.descripcion, categoriaId:req.body.categoria},
                 {
                 where: {
                     id: req.body.id
