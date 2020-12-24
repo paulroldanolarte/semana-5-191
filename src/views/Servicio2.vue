@@ -7,7 +7,7 @@
 <!-- contenidoservicio -->
 <contenido-datos></contenido-datos>
 <!-- precios -->
-<valor-precios></valor-precios>
+<segundo-servicio></segundo-servicio>
 <!-- pageFooter -->
 <page-footer></page-footer>
 </div>
@@ -15,12 +15,12 @@
 
 <script>
 import ContenidoDatos from '../components/auth2/ContenidoDatos.vue'
-import ValorPrecios from '../components/auth2/ValorPrecios.vue'
+import segundoServicio from '../components/auth2/segundoServicio.vue'
 import BarraInicial from '../components/BarraInicial.vue'
 import PageFooter from '../components/pageFooter.vue'
 
 export default {
-  components: { BarraInicial, ValorPrecios, PageFooter, ContenidoDatos },
+  components: { BarraInicial, segundoServicio, PageFooter, ContenidoDatos },
     
 }
 </script>

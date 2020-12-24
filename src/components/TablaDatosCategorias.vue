@@ -42,6 +42,18 @@
                       counter="250"
                     ></v-textarea>
                   </v-col>
+                  <v-col cols="12">
+                    <v-text-field
+                      v-model="editedItem.imagen"
+                      label="ruta imagen"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12">
+                    <v-text-field
+                      v-model="editedItem.ruta"
+                      label="dirección ruta"
+                    ></v-text-field>
+                  </v-col>
                 </v-row>
               </v-container>
             </v-card-text>
@@ -113,6 +125,8 @@ export default {
         value: "nombre",
       },
       { text: "Descripción", value: "descripcion" },
+      { text: "Ruta Imagen", value: "imagen" },
+      { text: "Ruta Dirección", value: "ruta" },
       { text: "Estado", value: "estado" },
       { text: "Actions", value: "actions", soportable: false },
     ],
@@ -122,12 +136,16 @@ export default {
       id: 0,
       nombre: "",
       descripcion: "",
+      imagen:"",
+      ruta:"",
       estado: 0,
     },
     defaultItem: {
       id: 0,
       nombre: "",
       descripcion: "",
+      imagen:"",
+      ruta:"",
       estado: 0,
     },
   }),
@@ -175,6 +193,7 @@ export default {
     editItem(item) {
       //this.editedIndex = this.categorias.indexOf(item)
       this.editedIndex = item.id;
+      
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
@@ -245,6 +264,9 @@ export default {
             "id": this.editedItem.id,
             "nombre": this.editedItem.nombre,
             "descripcion": this.editedItem.descripcion,
+            "imagen": this.editedItem.imagen,
+            "ruta": this.editedItem.ruta,
+            
           },{
           headers:{
             token: this.$store.state.token
@@ -262,6 +284,8 @@ export default {
             "estado": 1,
             "nombre": this.editedItem.nombre,
             "descripcion": this.editedItem.descripcion,
+            "imagen": this.editedItem.imagen,
+            "ruta": this.editedItem.ruta,
           },{
           headers:{
             token: this.$store.state.token

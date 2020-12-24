@@ -126,7 +126,7 @@ export default {
 
 .bg-image {
   /* background-image: url('https://source.unsplash.com/WEQbe2jBg40/600x1200'); */
-  background-image: url('https://www.terravista-erlebnisreisen.de/files/media/bilder/amerika/kombireisen/privatreisen/faszination-amazonas/boot-brasilien-amazonas.jpg');
+  background-image: url('https://image.freepik.com/vector-gratis/resumen-puntos-conectados-sobre-fondo-rojo-brillante_43969-748.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -230,44 +230,4 @@ export default {
 
 
 
-
-
-
-/* body {
-  height: 100%;
-}
-
-#logincs {
-   background-color: #f5f5f5;
-}
-
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
-}
-.form-signin .checkbox {
-  font-weight: 400;
-}
-.form-signin .form-control {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-} */
 </style>

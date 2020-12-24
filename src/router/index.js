@@ -69,7 +69,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "controlador" */ '../views/Controlador.vue'),
     meta:{
       Administrador: true,
-      // Vendedor: true,
+      Vendedor: true,
       // Almacenero:true,
       auth: true
     },

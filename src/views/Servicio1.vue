@@ -8,7 +8,7 @@
 <contenido-factura></contenido-factura>
 
 <!-- Precios  -->
-<valor-precios></valor-precios>
+<primer-servicio></primer-servicio>
 
 <!-- page footer -->
 <page-footer></page-footer>
@@ -16,15 +16,17 @@
 </template>
 
 <script>
+
 import BarraInicial from '../components/BarraInicial.vue'
 import PageFooter from '../components/pageFooter.vue'
-import ValorPrecios from '../components/auth2/ValorPrecios.vue'
+// import ValorPrecios from '../components/auth2/ValorPrecios.vue'
 import ContenidoFactura from '../components/auth2/ContenidoFactura.vue'
+import PrimerServicio from '../components/auth2/primerServicio.vue'
 export default {
   name: "Servicio1",
-  components: { BarraInicial, PageFooter,ValorPrecios, ContenidoFactura},
+  components: { BarraInicial,PrimerServicio, PageFooter, ContenidoFactura,
   
-}
+}}
 </script>
 
 <style >

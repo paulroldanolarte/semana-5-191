@@ -46,6 +46,7 @@
 
                 <v-list-item
                   v-for="([title, icon, ruta], index) in admins"
+                  
                   :key = "index"
                   :to = "{ name: ruta }"
                   

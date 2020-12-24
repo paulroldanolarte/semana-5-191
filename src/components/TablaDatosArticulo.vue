@@ -65,7 +65,7 @@
                   <v-col cols="12">
                     <v-text-field
                       v-model="editedItem.codigo"
-                      label="código"
+                      label="Precio"
                     ></v-text-field>
                   </v-col>
 
@@ -146,7 +146,7 @@ export default {
         sortable: true,
         value: "nombre",
       },
-      { text: "Código", value: "codigo" },
+      { text: "Precio", value: "codigo" },
       { text: "Categoria", value: "categoria.nombre" },
       { text: "Descripción", value: "descripcion" },
       { text: "Estado", value: "estado" },
@@ -165,6 +165,7 @@ export default {
       categoria: {
         id:0,
         nombre:'',
+        estado: 0
       }
     },
     defaultItem: {
@@ -176,6 +177,7 @@ export default {
       categoria: {
         id:0,
         nombre:'',
+        estado:0
       }
     },
   }),
@@ -204,7 +206,11 @@ export default {
     
     list() {
       axios
-        .get("http://localhost:3000/api/articulo/list")
+        .get("http://localhost:3000/api/articulo/list", {
+          headers:{
+            token: this.$store.state.token
+          }
+        })
 
         .then((response) => {
           this.articulos = response.data;
@@ -234,10 +240,10 @@ export default {
 
     editItem(item) {
       //this.editedIndex = this.categorias.indexOf(item)
-      this.editedIndex = item.id;
+      this.editedIndex = item.id
       //comparador ternario
       this.categoria = item? item.categoria : '';
-      this.editedItem = Object.assign({}, item);
+      this.editedItem = Object.assign({}, item)
       this.dialog = true;
 
     },
@@ -269,8 +275,8 @@ export default {
         //POST
         axios.put("http://localhost:3000/api/articulo/activate", {
             "id": this.editedItem.id,
-          }, {
-          headers: {
+          },{
+          headers:{
             token: this.$store.state.token
           }
         })
@@ -304,11 +310,14 @@ export default {
     save() {
       if (this.editedIndex > -1) {
         //put
-        axios.put("http://localhost:3000/api/articulos/update", {
+        axios.put("http://localhost:3000/api/articulo/update", {
             "id": this.editedItem.id,
             "nombre": this.editedItem.nombre,
             "descripcion": this.editedItem.descripcion,
-          },{
+            "codigo":this.editedItem.codigo,
+            "categoria": this.categoria.id,
+            //"categoriaId": this.categoria.id,
+          }, {
           headers:{
             token: this.$store.state.token
           }
@@ -325,7 +334,9 @@ export default {
             "estado": 1,
             "nombre": this.editedItem.nombre,
             "descripcion": this.editedItem.descripcion,
-          },{
+            "codigo":this.editedItem.codigo,
+            "categoriaId": this.categoria.id,
+          }, {
           headers:{
             token: this.$store.state.token
           }

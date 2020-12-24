@@ -48,6 +48,25 @@
                     ></v-text-field>
                   </v-col>
 
+                  <v-col
+                    cols="12"
+                  >
+                    <v-text-field
+                      v-model="editedItem.rol"
+                      label="Rol"
+                    ></v-text-field>
+                  </v-col>
+
+                  <v-col
+                    cols="12"
+                  >
+                    <v-text-field
+                      v-model="editedItem.password"
+                      label="Password"
+                      type="password"
+                    ></v-text-field>
+                  </v-col>
+
                 </v-row>
               </v-container>
             </v-card-text>
@@ -119,23 +138,29 @@ export default {
         value: "nombre",
       },
       { text: "email", value: "email" },
+      { text: "Rol", value: "rol" },
       { text: "Estado", value: "estado" },
       { text: "Actions", value: "actions", soportable: false },
     ],
     usuarios:[],
-    categorias: [],
+    // categorias: [],
     editedIndex: -1,
+    password:'',
     editedItem: {
       id: 0,
       nombre: "",
       email: "",
+      rol:"",
       estado: 0,
+      password:"",
     },
     defaultItem: {
       id: 0,
       nombre: "",
       email: "",
+      rol: "",
       estado: 0,
+      password:"",
     },
   }),
 
@@ -156,6 +181,11 @@ export default {
 
   created() {
     this.list();
+  },
+
+  
+  beforeCreate() {
+      this.$store.dispatch('autoLogin');
   },
 
   methods: {
@@ -197,7 +227,11 @@ export default {
         //put
         axios.put("http://localhost:3000/api/usuario/deactivate", {
             "id": this.editedItem.id,
-          })
+          },{
+          headers:{
+            token: this.$store.state.token
+          }
+        })
           .then((response) => {
             this.list();
           })
@@ -208,7 +242,11 @@ export default {
         //POST
         axios.put("http://localhost:3000/api/usuario/activate", {
             "id": this.editedItem.id,
-          })
+          },{
+          headers:{
+            token: this.$store.state.token
+          }
+        })
           .then((response) => {
             this.list();
           })
@@ -243,7 +281,14 @@ export default {
             "id": this.editedItem.id,
             "nombre": this.editedItem.nombre,
             "email": this.editedItem.email,
-          })
+            "estado": this.editedItem.estado,
+            "rol": this.editedItem.rol,
+            "password": this.editedItem.password,
+          },{
+          headers:{
+            token: this.$store.state.token
+          }
+        })
           .then((response) => {
             this.list();
           })
@@ -252,11 +297,18 @@ export default {
           });
       } else {
         //POST
-        axios.post("http://localhost:3000/api/categoria/add", {
+        axios.post("http://localhost:3000/api/usuario/add", {
             "estado": 1,
             "nombre": this.editedItem.nombre,
             "email": this.editedItem.email,
-          })
+            "estado": this.editedItem.estado,
+            "rol": this.editedItem.rol,
+            "password": this.editedItem.password,
+          },{
+          headers:{
+            token: this.$store.state.token
+          }
+        })
           .then((response) => {
             this.list();
           })

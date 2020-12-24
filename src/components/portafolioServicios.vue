@@ -6,23 +6,28 @@
         <h2>Trabajamos para ofrecerte los <br> <b>mejores servicios.</b></h2>
       </div>
       <!-- SERVICIOS DESDE AQUÍ-->
-      <div class="iServicio">
-        <div class="card mb-3 border-info"
+      <div class="iServicio" 
+      
           style="max-width: 1540px; margin-bottom: 15px; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5) ; background-color:#E0F7FA;"
           v-for="(categoria, index) of categorias"
           :key="index"
+      >
+        <div class="card mb-3 border-info"
+          v-if="categoria.estado === 1"
           >
           <div class="row no-gutters">
             <div class="col-md-4"     
             >
-              <img src="imagenes/servicio1.jpg" class="img-fluid" alt="servicio1">
+              <img  
+                :src="categoria.imagen"
+               class="img-fluid" alt="servicio1">
             </div>
             <div class="col-md-8">
               <div class="card-body">
                 <!-- <h3 class="card-title">Facturación Electrónica</h3> -->
                 <h3 class="card-title">{{ categoria.nombre }}</h3>
                 <p class="card-text">{{categoria.descripcion}}</p> <br> <br>
-                <router-link to="/Servicio1"> <button type="button" class="btn btn-outline-info"> Mas información..</button></router-link>
+                <router-link :to="categoria.ruta"> <button type="button" class="btn btn-outline-info"> Mas información..</button></router-link>
               </div>
             </div>
           </div>
